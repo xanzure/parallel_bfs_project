@@ -1,26 +1,42 @@
-## Graph Datasets Bibliography
+# Dataset Bibliography
+
+## Directed Graphs
 
 ### soc-LiveJournal1
-Leskovec et al. (2008)  
-Community Structure in Large Networks  
-https://snap.stanford.edu/data/soc-LiveJournal1.html
+- **Description:** Social network of LiveJournal users
+- **Nodes:** 4,847,571
+- **Edges:** 68,993,773
+- **Source:** SNAP (Stanford Network Analysis Project)
+- **Link:** https://snap.stanford.edu/data/soc-LiveJournal1.html
 
-### roadNet-CA
-Leskovec et al. (2007)  
-Graph Evolution: Densification and Shrinking Diameters  
-https://snap.stanford.edu/data/roadNet-CA.html
+### soc-Pokec (relationships)
+- **Description:** Social network from a Slovakian online community
+- **Nodes:** 1,632,803
+- **Edges:** 30,622,564
+- **Source:** SNAP
+- **Link:** https://snap.stanford.edu/data/soc-Pokec.html
 
 ### web-Google
-Leskovec et al. (2007)  
-Graph Evolution: Densification and Shrinking Diameters  
-https://snap.stanford.edu/data/web-Google.html
+- **Description:** Web graph of Google pages
+- **Nodes:** 875,713
+- **Edges:** 5,105,039
+- **Source:** SNAP
+- **Link:** https://snap.stanford.edu/data/web-Google.html
 
-### email-Enron
-Klimt & Yang (2004)  
-Introducing the Enron Corpus  
-https://snap.stanford.edu/data/email-Enron.html
+---
 
-### facebook_combined
-Leskovec & McAuley (2012)  
-Learning to Discover Social Circles in Ego Networks  
-https://snap.stanford.edu/data/ego-Facebook.html
+## Undirected Graphs
+
+### com-Amazon
+- **Description:** Amazon product co-purchasing network
+- **Nodes:** 334,863
+- **Edges:** 925,872
+- **Source:** SNAP
+- **Link:** https://snap.stanford.edu/data/com-Amazon.html
+
+### com-Orkut
+- **Description:** Orkut social network
+- **Nodes:** 3,072,441
+- **Edges:** 117,185,083
+- **Source:** SNAP
+- **Link:** https://snap.stanford.edu/data/com-Orkut.html

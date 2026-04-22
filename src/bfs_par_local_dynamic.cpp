@@ -17,18 +17,27 @@ std::vector<int> bfs_parallel(const Graph& g, int source)
     current_frontier.push_back(source);
 
     int level = 0;
+    int num_threads = omp_get_max_threads();
+
+    std::vector<std::vector<int>> local_frontiers(num_threads);
+    std::vector<int> next_frontier;
 
     while (!current_frontier.empty()) 
     {
-        std::vector<int> next_frontier;
-        std::vector<std::vector<int>> local_frontiers(omp_get_max_threads());
+        next_frontier.clear();
+
+        for (int t = 0; t < num_threads; t++)
+        {
+            local_frontiers[t].clear();
+            local_frontiers[t].reserve(current_frontier.size() / num_threads + 1);
+        }
 
         #pragma omp parallel
         {
             int tid = omp_get_thread_num();
             auto& local = local_frontiers[tid];
 
-            #pragma omp for schedule(dynamic)
+            #pragma omp for schedule(dynamic, 64)
             for (int i = 0; i < (int)current_frontier.size(); i++) 
             {
                 int u = current_frontier[i];
@@ -62,7 +71,7 @@ std::vector<int> bfs_parallel(const Graph& g, int source)
         }
 
         level++;
-        current_frontier = next_frontier;
+        current_frontier.swap(next_frontier);
     }
 
     std::vector<int> result(g.n);
@@ -78,7 +87,7 @@ int main(int argc, char* argv[])
 {
     if (argc != 3) 
     {
-        std::cerr << "Usage: ./bfs_parallel <graph_file> <undirected_flag>" << std::endl;
+        std::cerr << "Usage: ./bfs_par_local_dynamic <graph_file> <undirected_flag>" << std::endl;
         return 1;
     }
 
